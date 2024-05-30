@@ -1,0 +1,55 @@
+<div *ngIf="vino">
+    <div class="title">
+        <h2 class="content-block">{{ vino.nombre }}</h2>
+        <div class="mt-5 cockpit">
+            <dx-button 
+                type="danger" 
+                [width]="100"
+                (click)="onDeleteVino()">
+                Eliminar
+            </dx-button>
+            <dx-button 
+                type="normal"
+                [width]="100" 
+                [routerLink]="['/vinos', vino.id, 'editar']">
+                Editar
+            </dx-button>
+        </div>
+    </div>
+        <br><br>
+        <div class="row foto-vino">
+            <div class="col-sm-4">
+                <img class="img-responsive" [src]="vino.imagenes.imgAnv" [alt]="vino.nombre">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Bodega</h5>
+                <p>{{ vino.bodega.nombre }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Región</h5>
+                <p>{{ vino.region.nombre }} ({{ vino.region.pais }})</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Tipo</h5>
+                <p>{{ vino.tipo.nombre }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Precio</h5>
+                <p>{{ vino.precio }} €</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Descripción</h5>
+                <p>{{ vino.breveDescripcion }}</p>
+            </div>
+        </div>
+</div>

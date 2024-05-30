@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { VinoListComponent } from './pages/vino-list/vino-list.component';
+import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path: 'vinos',
     component: VinoListComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'vinos/:id',
+    component: VinoDetailComponent,
     canActivate: [ AuthGuardService ]
   },
   {

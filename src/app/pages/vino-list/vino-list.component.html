@@ -6,7 +6,8 @@
   [focusedRowEnabled]="true"
   [focusedRowIndex]="0"
   [columnAutoWidth]="true"
-  [columnHidingEnabled]="true">
+  [columnHidingEnabled]="true"
+  (onRowClick)="onRowClick($event)">
 
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
@@ -39,12 +40,12 @@
     dataField="RegionNombre"
     caption="Región"
     [allowSorting]="false"
-    [hidingPriority]="7">
+    [hidingPriority]="6">
   </dxi-column>
   <dxi-column
     dataField="BodegaNombre"
     caption="Bodega"
-    [hidingPriority]="3">
+    [hidingPriority]="7">
   </dxi-column>
   <dxi-column
     dataField="Precio"
@@ -52,7 +53,7 @@
     caption="Precio"
     dataType="number"
     format="currency"
-    [hidingPriority]="6">
+    [hidingPriority]="3">
   </dxi-column>
   <dxi-column
     dataField="Graduacion"

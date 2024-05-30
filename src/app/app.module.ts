@@ -8,10 +8,13 @@ import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangeP
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
+import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
+import { DxButtonModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VinoDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoginFormModule,
     UnauthenticatedContentModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DxButtonModule
   ],
   providers: [
     AuthService,
