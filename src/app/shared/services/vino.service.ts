@@ -24,45 +24,45 @@ export class VinoService {
       .get<{ 'lista_vinos': [] }>(
         `${environment.apiUrl}vinos`
       )
-      .subscribe({
-        next: (response) => {
-          const responseVinos: Vino[] = [];
+      // .subscribe({
+      //   next: (response) => {
+      //     const responseVinos: Vino[] = [];
 
-          for (const vino of response.lista_vinos) {
-            responseVinos.push(
-              new Vino(
-                vino['Id'],
-                vino['Nombre'],
-                vino['Precio'],
-                vino['Region'],
-                {
-                  id: vino['TipoId'],
-                  nombre: vino['TipoNombre'],
-                  descripcion: vino['TipoDescripcion']
-                },
-                {
-                  id: vino['BodegaId'],
-                  nombre: vino['BodegaNombre'],
-                  descripcion: vino['BodegaDescripcion']
-                },
-                vino['Anada'],
-                vino['Alergenos'],
-                vino['Graduacion'],
-                vino['BreveDescripcion'],
-                vino['Capacidad'],
-                vino['Stock'],
-                {
-                  imgAnv: null,
-                  imgRev: null,
-                  imgDet: null,
-                },
-                null
-              )
-            );
-          }
-          this.setListaVinos(responseVinos);
-        }
-      })
+      //     for (const vino of response.lista_vinos) {
+      //       responseVinos.push(
+      //         new Vino(
+      //           vino['Id'],
+      //           vino['Nombre'],
+      //           vino['Precio'],
+      //           vino['Region'],
+      //           {
+      //             id: vino['TipoId'],
+      //             nombre: vino['TipoNombre'],
+      //             descripcion: vino['TipoDescripcion']
+      //           },
+      //           {
+      //             id: vino['BodegaId'],
+      //             nombre: vino['BodegaNombre'],
+      //             descripcion: vino['BodegaDescripcion']
+      //           },
+      //           vino['Anada'],
+      //           vino['Alergenos'],
+      //           vino['Graduacion'],
+      //           vino['BreveDescripcion'],
+      //           vino['Capacidad'],
+      //           vino['Stock'],
+      //           {
+      //             imgAnv: null,
+      //             imgRev: null,
+      //             imgDet: null,
+      //           },
+      //           null
+      //         )
+      //       );
+      //     }
+      //     this.setListaVinos(responseVinos);
+      //   }
+      // })
   }
 
   pruebaGet() {

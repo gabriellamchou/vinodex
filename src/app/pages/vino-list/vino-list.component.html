@@ -1,50 +1,71 @@
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="mt-5">Listado de vinos</h1>
-    </div>
-</div>
-<br><br>
-<a routerLink="/vinos/nuevo" class="btn btn-primary">Nuevo vino</a>
-<br><br>
-<div class="row">
-    <div class="col-xs-12 text-center">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Añada</th>
-                    <th scope="col">Bodega</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let vino of listaVinos">
-                    <th scope="row">{{ vino.id }}</th>
-                    <td>
-                        <a 
-                        [routerLink]="['/vinos', vino.id]">
-                            {{ vino.nombre }}
-                        </a>
-                    </td>
-                    <td>{{ vino.anada }}</td>
-                    <td>{{ vino.bodega.nombre }}</td>
-                    <td>{{ vino.tipo.nombre }}</td>
-                    <td>
-                        <a
-                            [routerLink]="['/vinos', vino.id, 'editar']">
-                            <img src="\assets\images\edit_pencil.png">
-                        </a>
-                    </td>
-                    <td>
-                        <a
-                            (click)="onDeleteVino(vino.id)">
-                            <img src="\assets\images\delete_bin.png">
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<h2 class="content-block">Vinos</h2>
+
+<dx-data-grid class="dx-card wide-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true">
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    dataField="Id"
+    [width]="90"
+    [hidingPriority]="2">
+  </dxi-column>
+  <dxi-column
+    dataField="Nombre"
+    caption="Nombre"
+    [hidingPriority]="8">
+  </dxi-column>
+  <dxi-column
+    dataField="Anada"
+    [width]="80"
+    caption="Añada"
+    dataType="number"
+    [hidingPriority]="4">
+  </dxi-column>
+  <dxi-column
+    dataField="TipoNombre"
+    [width]="130"
+    caption="Tipo"
+    [hidingPriority]="5">
+  </dxi-column>
+  <dxi-column
+    dataField="RegionNombre"
+    caption="Región"
+    [allowSorting]="false"
+    [hidingPriority]="7">
+  </dxi-column>
+  <dxi-column
+    dataField="BodegaNombre"
+    caption="Bodega"
+    [hidingPriority]="3">
+  </dxi-column>
+  <dxi-column
+    dataField="Precio"
+    [width]="90"
+    caption="Precio"
+    dataType="number"
+    format="currency"
+    [hidingPriority]="6">
+  </dxi-column>
+  <dxi-column
+    dataField="Graduacion"
+    [width]="110"
+    caption="Graduación"
+    dataType="number"
+    [hidingPriority]="1">
+  </dxi-column>
+  <dxi-column
+    dataField="Stock"
+    [width]="120"
+    caption="Stock"
+    dataType="number"
+    [hidingPriority]="0">
+  </dxi-column>
+</dx-data-grid>

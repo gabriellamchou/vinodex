@@ -1,43 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { VinoService } from '../../shared/services/vino.service';
-import { Vino } from '../../shared/models/vino.model';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { Component } from '@angular/core';
+
+import 'devextreme/data/odata/store';
+import { VinoService } from 'src/app/shared/services/vino.service';
 
 @Component({
-  selector: 'app-vino-list',
-  templateUrl: './vino-list.component.html',
+  templateUrl: 'vino-list.component.html',
   styleUrls: ['./vino-list.component.css']
 })
-export class VinoListComponent implements OnInit {
-  listaVinos!: Vino[];
 
-  constructor(
-    private vinoService: VinoService,
-    private http: HttpClient
-  ) { }
+export class VinoListComponent {
+  dataSource: any;
 
-  ngOnInit(): void {
-    this.vinoService.findAllVinos();
-    this.vinoService.vinosChanged
-      .subscribe({
-        next: (vinos: Vino[]) => {
-          this.listaVinos = vinos;
-        }
-      })
+  constructor(private vinoService: VinoService) {
+      this.vinoService.findAllVinos()
+        .subscribe(data => {
+          this.dataSource = data.lista_vinos;
+        });
   }
-
-  onDeleteVino(id: number) {
-    this.http
-      .delete(
-        `${environment.apiUrl}vinos/${id}/eliminar`
-      )
-      .subscribe(
-        (response) => {
-          console.log(response);
-          this.vinoService.deleteVino(id);
-        }
-      )
-  }
-
 }

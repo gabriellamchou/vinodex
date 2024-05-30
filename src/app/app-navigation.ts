@@ -5,10 +5,6 @@ export const navigation = [
     icon: 'home'
   },
   {
-    text: 'Lista de vinos',
-    path: '/vinos'
-  },
-  {
     text: 'Examples',
     icon: 'folder',
     items: [
@@ -17,8 +13,8 @@ export const navigation = [
         path: '/profile'
       },
       {
-        text: 'Tasks',
-        path: '/tasks'
+        text: 'Vinos',
+        path: '/vinos'
       }
     ]
   }
