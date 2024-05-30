@@ -1,4 +1,4 @@
-<h2 class="content-block">Tasks</h2>
+<h2 class="content-block">Vinos</h2>
 
 <dx-data-grid class="dx-card wide-card"
   [dataSource]="dataSource"
@@ -13,58 +13,55 @@
   <dxo-filter-row [visible]="true"></dxo-filter-row>
 
   <dxi-column
-    dataField="Task_ID"
+    dataField="Id"
     [width]="90"
     [hidingPriority]="2">
   </dxi-column>
   <dxi-column
-    dataField="Task_Subject"
+    dataField="Nombre"
     [width]="190"
-    caption="Subject"
+    caption="Nombre"
     [hidingPriority]="8">
   </dxi-column>
   <dxi-column
-    dataField="Task_Status"
-    caption="Status"
-    [hidingPriority]="6">
+    dataField="Anada"
+    caption="Añada"
+    dataType="number"
+    [hidingPriority]="4">
   </dxi-column>
   <dxi-column
-    dataField="Task_Priority"
-    caption="Priority"
+    dataField="TipoNombre"
+    caption="Tipo"
     [hidingPriority]="5">
-    <dxo-lookup
-      [dataSource]="priority"
-      valueExpr="value"
-      displayExpr="name">
-    </dxo-lookup>
   </dxi-column>
   <dxi-column
-    dataField="ResponsibleEmployee.Employee_Full_Name"
-    caption="Assigned To"
+    dataField="RegionNombre"
+    caption="Región"
     [allowSorting]="false"
     [hidingPriority]="7">
   </dxi-column>
   <dxi-column
-    dataField="Task_Start_Date"
-    caption="Start Date"
-    dataType="date"
+    dataField="BodegaNombre"
+    caption="Bodega"
     [hidingPriority]="3">
   </dxi-column>
   <dxi-column
-    dataField="Task_Due_Date"
-    caption="Due Date"
-    dataType="date"
-    [hidingPriority]="4">
+    dataField="Precio"
+    caption="Precio"
+    dataType="number"
+    format="currency"
+    [hidingPriority]="6">
   </dxi-column>
   <dxi-column
-    dataField="Task_Priority"
-    caption="Priority"
-    name="Priority"
+    dataField="Graduacion"
+    caption="Graduación"
+    dataType="number"
     [hidingPriority]="1">
   </dxi-column>
   <dxi-column
-    dataField="Task_Completion"
-    caption="Completion"
+    dataField="Stock"
+    caption="Stock"
+    dataType="number"
     [hidingPriority]="0">
   </dxi-column>
 </dx-data-grid>
