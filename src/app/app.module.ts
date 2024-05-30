@@ -10,11 +10,14 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
 import { DxButtonModule } from 'devextreme-angular';
+import { VinoEditComponent } from './pages/vino-edit/vino-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VinoDetailComponent
+    VinoDetailComponent,
+    VinoEditComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import { DxButtonModule } from 'devextreme-angular';
     UnauthenticatedContentModule,
     AppRoutingModule,
     HttpClientModule,
-    DxButtonModule
+    DxButtonModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,

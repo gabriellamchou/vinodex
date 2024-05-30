@@ -7,6 +7,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { VinoListComponent } from './pages/vino-list/vino-list.component';
 import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
+import { VinoEditComponent } from './pages/vino-edit/vino-edit.component';
 
 const routes: Routes = [
   {
@@ -45,8 +46,18 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'vinos/nuevo',
+    component: VinoEditComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: 'vinos/:id',
     component: VinoDetailComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'vinos/:id/editar',
+    component: VinoEditComponent,
     canActivate: [ AuthGuardService ]
   },
   {
