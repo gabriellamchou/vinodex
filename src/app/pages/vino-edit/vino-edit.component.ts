@@ -43,7 +43,7 @@ export class VinoEditComponent implements OnInit {
           this.initForm();
         }
       )
-      this.listaUvas = this.uvaService.getListaUvas();
+    this.listaUvas = this.uvaService.getListaUvas();
   }
 
   private initForm() {

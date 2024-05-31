@@ -6,7 +6,7 @@ import { VinoService } from 'src/app/shared/services/vino.service';
 
 @Component({
   templateUrl: 'vino-list.component.html',
-  styleUrls: ['./vino-list.component.css']
+  styleUrls: ['./vino-list.component.scss']
 })
 
 export class VinoListComponent {

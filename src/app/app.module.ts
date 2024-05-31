@@ -8,16 +8,10 @@ import { FooterModule, ResetPasswordFormModule, CreateAccountFormModule, ChangeP
 import { AuthService, ScreenService, AppInfoService } from './shared/services';
 import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
-import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
-import { DxButtonModule } from 'devextreme-angular';
-import { VinoEditComponent } from './pages/vino-edit/vino-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    VinoDetailComponent,
-    VinoEditComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginFormModule,
     UnauthenticatedContentModule,
     AppRoutingModule,
-    HttpClientModule,
-    DxButtonModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [
     AuthService,

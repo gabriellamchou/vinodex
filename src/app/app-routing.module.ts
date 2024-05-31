@@ -4,10 +4,12 @@ import { LoginFormComponent, ResetPasswordFormComponent, CreateAccountFormCompon
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxFormModule, DxNumberBoxModule, DxSelectBoxModule } from 'devextreme-angular';
 import { VinoListComponent } from './pages/vino-list/vino-list.component';
 import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
 import { VinoEditComponent } from './pages/vino-edit/vino-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 const routes: Routes = [
   {
@@ -67,13 +69,27 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule],
+  imports: [
+    RouterModule.forRoot(
+    routes, 
+    { useHash: true }
+  ), 
+    BrowserModule,
+    DxDataGridModule, 
+    DxFormModule,
+    DxNumberBoxModule,
+    DxSelectBoxModule,
+    DxButtonModule,
+    ReactiveFormsModule
+  ],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
     HomeComponent,
     ProfileComponent,
-    VinoListComponent
+    VinoListComponent,
+    VinoDetailComponent,
+    VinoEditComponent
   ]
 })
 export class AppRoutingModule { }

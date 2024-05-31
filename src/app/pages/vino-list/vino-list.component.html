@@ -1,4 +1,14 @@
-<h2 class="content-block">Vinos</h2>
+<div class="content-block title">
+  <h2>Vinos</h2>
+  <div class="cockpit">
+    <dx-button 
+        id="new-button"
+        [width]="100" 
+        [routerLink]="['/vinos', 'nuevo']">
+        Nuevo Vino
+    </dx-button>
+  </div>
+</div>
 
 <dx-data-grid class="dx-card wide-card"
   [dataSource]="dataSource"

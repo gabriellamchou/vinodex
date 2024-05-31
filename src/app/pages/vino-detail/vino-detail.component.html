@@ -1,7 +1,7 @@
 <div *ngIf="vino">
-    <div class="title">
-        <h2 class="content-block">{{ vino.nombre }}</h2>
-        <div class="mt-5 cockpit">
+    <div class="content-block title">
+        <h2>{{ vino.nombre }}</h2>
+        <div class="cockpit">
             <dx-button 
                 type="danger" 
                 [width]="100"
@@ -9,18 +9,16 @@
                 Eliminar
             </dx-button>
             <dx-button 
-                type="normal"
+                id="edit-button"
                 [width]="100" 
                 [routerLink]="['/vinos', vino.id, 'editar']">
                 Editar
             </dx-button>
         </div>
     </div>
-        <br><br>
-        <div class="row foto-vino">
-            <div class="col-sm-4">
-                <img class="img-responsive" [src]="vino.imagenes.imgAnv" [alt]="vino.nombre">
-            </div>
+    <div class="details dx-card content-block">
+        <div class="foto-vino">
+            <img class="img-responsive" [src]="vino.imagenes.imgAnv" [alt]="vino.nombre">
         </div>
         <div class="row">
             <div class="col-xs-12">
@@ -52,4 +50,5 @@
                 <p>{{ vino.breveDescripcion }}</p>
             </div>
         </div>
+    </div>
 </div>
