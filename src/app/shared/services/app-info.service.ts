@@ -5,7 +5,7 @@ export class AppInfoService {
   constructor() {}
 
   public get title() {
-    return 'Vinodex';
+    return 'Bacchus';
   }
 
   public get currentYear() {
