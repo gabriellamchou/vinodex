@@ -6,14 +6,14 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DxButtonModule, DxDataGridModule, DxFormModule, DxNumberBoxModule, DxSelectBoxModule } from 'devextreme-angular';
-import { VinoListComponent } from './pages/vino-list/vino-list.component';
-import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
-import { VinoEditComponent } from './pages/vino-edit/vino-edit.component';
+import { VinoListComponent } from './pages/vinos/vino-list/vino-list.component';
+import { VinoDetailComponent } from './pages/vinos/vino-detail/vino-detail.component';
+import { VinoEditComponent } from './pages/vinos/vino-edit/vino-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { UvaListComponent } from './pages/uva-list/uva-list.component';
-import { UvaDetailComponent } from './pages/uva-detail/uva-detail.component';
-import { UvaEditComponent } from './pages/uva-edit/uva-edit.component';
+import { UvaListComponent } from './pages/uvas/uva-list/uva-list.component';
+import { UvaDetailComponent } from './pages/uvas/uva-detail/uva-detail.component';
+import { UvaEditComponent } from './pages/uvas/uva-edit/uva-edit.component';
 
 const routes: Routes = [
   {
