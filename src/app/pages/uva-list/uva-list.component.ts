@@ -7,17 +7,23 @@ import { UvaService } from 'src/app/shared/services/uva.service';
   templateUrl: './uva-list.component.html',
   styleUrls: ['./uva-list.component.scss']
 })
-export class UvaListComponent {
+export class UvaListComponent implements OnInit {
 
   dataSource: any;
 
   constructor(
     private uvaService: UvaService,
-    private router: Router) {
-      this.uvaService.findAllUvas()
-        .subscribe(data => {
-          this.dataSource = data.lista_uvas;
-        });
+    private router: Router) { }
+
+  ngOnInit(): void {
+    this.uvaService.findAllUvas()
+      .subscribe(data => {
+        this.dataSource = data.lista_uvas;
+        this.uvaService.uvasChanged
+          .subscribe(() => {
+            this.dataSource = data.lista_uvas;
+          })
+      });
   }
 
   onRowClick(event: any) {

@@ -51,16 +51,10 @@ export class UvaDetailComponent implements OnInit {
   }
 
   onDeleteUva() {
-    this.http
-      .delete(
-        `${environment.apiUrl}uvas/${this.id}/eliminar`
-      )
-      .subscribe(
-        (response: any) => {
-          console.log(response);
-          this.uvaService.deleteUva(this.id);
-          this.router.navigate(['..'], {relativeTo: this.route})
-        }
-      )
+    this.uvaService.deleteUva(this.id);
+    this.uvaService.uvasChanged
+      .subscribe(() => {
+        this.router.navigate(['..'], {relativeTo: this.route});
+      });
   }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { LoginFormComponent, ResetPasswordFormComponent, CreateAccountFormComponent, ChangePasswordFormComponent } from './shared/components';
 import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
@@ -12,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { UvaListComponent } from './pages/uva-list/uva-list.component';
 import { UvaDetailComponent } from './pages/uva-detail/uva-detail.component';
+import { UvaEditComponent } from './pages/uva-edit/uva-edit.component';
 
 const routes: Routes = [
   {
@@ -70,8 +72,18 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'uvas/nueva',
+    component: UvaEditComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: 'uvas/:id',
     component: UvaDetailComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'uvas/:id/editar',
+    component: UvaEditComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -103,7 +115,8 @@ const routes: Routes = [
     VinoDetailComponent,
     VinoEditComponent,
     UvaListComponent,
-    UvaDetailComponent
+    UvaDetailComponent,
+    UvaEditComponent
   ]
 })
 export class AppRoutingModule { }
