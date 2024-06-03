@@ -10,14 +10,18 @@ import { VinoService } from 'src/app/shared/services/vino.service';
 })
 
 export class VinoListComponent {
-  dataSource: any;
+  listaVinos: any;
 
   constructor(
     private vinoService: VinoService,
     private router: Router) {
       this.vinoService.findAllVinos()
-        .subscribe(data => {
-          this.dataSource = data.lista_vinos;
+        .subscribe(response => {
+          this.listaVinos = response.lista_vinos;
+          this.vinoService.vinosChanged
+            .subscribe(() => {
+              this.listaVinos = response.lista_vinos;
+            })
         });
   }
 

@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { Vino } from 'src/app/shared/models/vino.model';
 import { VinoService } from 'src/app/shared/services/vino.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-vino-detail',
@@ -19,17 +17,14 @@ export class VinoDetailComponent implements OnInit {
   constructor(
     private vinoService: VinoService,
     private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.http.get<any>(
-          `${environment.apiUrl}vinos/${this.id}`
-        )
+        this.vinoService.getVino(this.id)
           .subscribe({
             next: (response) => {
               const vinoRes = response.data;
@@ -37,20 +32,20 @@ export class VinoDetailComponent implements OnInit {
                 vinoRes['Id'],
                 vinoRes['Nombre'],
                 vinoRes['Precio'],
-                { 
-                  id: vinoRes['RegionId'], 
-                  nombre: vinoRes['RegionNombre'], 
-                  pais: vinoRes['RegionPais'], 
+                {
+                  id: vinoRes['RegionId'],
+                  nombre: vinoRes['RegionNombre'],
+                  pais: vinoRes['RegionPais'],
                   descripcion: vinoRes['RegionDescripcion']
                 },
-                { 
-                  id: vinoRes['TipoId'], 
-                  nombre: vinoRes['TipoNombre'], 
+                {
+                  id: vinoRes['TipoId'],
+                  nombre: vinoRes['TipoNombre'],
                   descripcion: vinoRes['TipoDescripcion']
                 },
-                { 
-                  id: vinoRes['BodegaId'], 
-                  nombre: vinoRes['BodegaNombre'], 
+                {
+                  id: vinoRes['BodegaId'],
+                  nombre: vinoRes['BodegaNombre'],
                   descripcion: vinoRes['BodegaDescripcion']
                 },
                 vinoRes['Anada'],
@@ -67,21 +62,16 @@ export class VinoDetailComponent implements OnInit {
                 null
               );
             }
-        })
+          })
       }
     );
   }
 
   onDeleteVino() {
-    this.http
-      .delete(
-        `${environment.apiUrl}vinos/${this.id}/eliminar`
-      )
-      .subscribe(
-        (response: any) => {
-          console.log(response);
-          this.vinoService.deleteVino(this.id);
-          this.router.navigate(['..'], {relativeTo: this.route})
+    this.vinoService.deleteVino(this.id);
+    this.vinoService.vinosChanged
+      .subscribe(() => {
+          this.router.navigate(['..'], { relativeTo: this.route })
         }
       )
   }

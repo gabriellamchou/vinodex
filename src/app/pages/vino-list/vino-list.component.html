@@ -9,7 +9,7 @@
 </div>
 
 <dx-data-grid class="dx-card wide-card"
-  [dataSource]="dataSource"
+  [dataSource]="listaVinos"
   [showBorders]="false"
   [columnAutoWidth]="true"
   [columnHidingEnabled]="true"
@@ -47,7 +47,6 @@
   <dxi-column
     dataField="RegionNombre"
     caption="Región"
-    [allowSorting]="false"
     [hidingPriority]="6">
   </dxi-column>
   <dxi-column

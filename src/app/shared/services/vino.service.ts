@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Subject, tap } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 
 import { Vino } from '../models/vino.model';
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class VinoService {
 
-  vinosChanged = new Subject<Vino[]>();
+  vinosChanged = new Subject<void>();
 
   private listaVinos: Vino[] = []
 
@@ -24,51 +24,8 @@ export class VinoService {
       .get<{ 'lista_vinos': [] }>(
         `${environment.apiUrl}vinos`
       )
-    // .subscribe({
-    //   next: (response) => {
-    //     const responseVinos: Vino[] = [];
-
-    //     for (const vino of response.lista_vinos) {
-    //       responseVinos.push(
-    //         new Vino(
-    //           vino['Id'],
-    //           vino['Nombre'],
-    //           vino['Precio'],
-    //           vino['Region'],
-    //           {
-    //             id: vino['TipoId'],
-    //             nombre: vino['TipoNombre'],
-    //             descripcion: vino['TipoDescripcion']
-    //           },
-    //           {
-    //             id: vino['BodegaId'],
-    //             nombre: vino['BodegaNombre'],
-    //             descripcion: vino['BodegaDescripcion']
-    //           },
-    //           vino['Anada'],
-    //           vino['Alergenos'],
-    //           vino['Graduacion'],
-    //           vino['BreveDescripcion'],
-    //           vino['Capacidad'],
-    //           vino['Stock'],
-    //           {
-    //             imgAnv: null,
-    //             imgRev: null,
-    //             imgDet: null,
-    //           },
-    //           null
-    //         )
-    //       );
-    //     }
-    //     this.setListaVinos(responseVinos);
-    //   }
-    // })
-  }
-
-  pruebaGet() {
-    return this.http
-      .get(
-        `${environment.apiUrl}prueba-get`
+      .pipe(
+        tap(response => this.listaVinos = response.lista_vinos)
       )
   }
 
@@ -76,15 +33,10 @@ export class VinoService {
     return this.listaVinos;
   }
 
-  setListaVinos(vinos: Vino[]) {
-    this.listaVinos = vinos;
-    this.vinosChanged.next(this.listaVinos);
-  }
-
   getVino(id: number) {
-    return this.listaVinos.find(
-      (vino) => vino.id === id
-    );
+    return this.http.get<any>(
+      `${environment.apiUrl}vinos/${id}`
+    )
   }
 
   addVino(vinoForm: FormGroup<any>) {
@@ -109,7 +61,10 @@ export class VinoService {
       form
     )
       .subscribe({
-        next: (response) => { console.log(response) },
+        next: (response) => { 
+          console.log(response);
+          this.vinosChanged.next(); 
+        },
         error: (error) => { console.error(error) }
       })
   }
@@ -137,13 +92,24 @@ export class VinoService {
     this.http.post(
       `${environment.apiUrl}vinos/${id}/editar`,
       form
-    ).subscribe(
-      response => console.log(response)
-    );
+    )
+    .subscribe({
+      next: (response) => {
+        console.log(response);
+        this.vinosChanged.next();
+      }
+    });
   }
 
   deleteVino(id: number) {
-    const index = this.listaVinos.indexOf(this.getVino(id)!);
-    this.listaVinos.splice(index, 1);
+    return this.http
+      .delete(
+        `${environment.apiUrl}vinos/${id}/eliminar`
+      )
+      .subscribe({
+        next: () => {
+          this.vinosChanged.next();
+        }
+      });
   }
 }

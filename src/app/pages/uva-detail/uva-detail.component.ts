@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+
 import { Uva } from 'src/app/shared/models/uva.model';
 import { UvaService } from 'src/app/shared/services/uva.service';
-
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-uva-detail',
@@ -27,9 +26,7 @@ export class UvaDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.http.get<any>(
-          `${environment.apiUrl}uvas/${this.id}`
-        )
+        this.uvaService.getUva(this.id)
           .subscribe({
             next: (response) => {
               const uvaRes = response.data;
@@ -45,7 +42,7 @@ export class UvaDetailComponent implements OnInit {
                 uvaRes['abv'],
               );
             }
-        })
+          });
       }
     );
   }
@@ -54,7 +51,7 @@ export class UvaDetailComponent implements OnInit {
     this.uvaService.deleteUva(this.id);
     this.uvaService.uvasChanged
       .subscribe(() => {
-        this.router.navigate(['..'], {relativeTo: this.route});
+        this.router.navigate(['..'], { relativeTo: this.route });
       });
   }
 }

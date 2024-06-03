@@ -1,10 +1,10 @@
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { UvaService } from 'src/app/shared/services/uva.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-uva-edit',
@@ -54,9 +54,7 @@ export class UvaEditComponent implements OnInit {
     });
 
     if (this.editMode) {
-      this.http.get<any>(
-        `${environment.apiUrl}uvas/${this.id}`
-      )
+      this.uvaService.getUva(this.id)
         .subscribe({
           next: (response) => {
             const uvaRes = response.data;
@@ -92,7 +90,7 @@ export class UvaEditComponent implements OnInit {
     this.uvaService.uvasChanged
       .subscribe({
         next: () => {
-          this.router.navigate(['..'], {relativeTo: this.route});
+          this.router.navigate(['..'], { relativeTo: this.route });
         }
       });
   }

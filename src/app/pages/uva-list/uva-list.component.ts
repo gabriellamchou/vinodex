@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { UvaService } from 'src/app/shared/services/uva.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UvaService } from 'src/app/shared/services/uva.service';
 })
 export class UvaListComponent implements OnInit {
 
-  dataSource: any;
+  listaUvas: any;
 
   constructor(
     private uvaService: UvaService,
@@ -18,10 +19,10 @@ export class UvaListComponent implements OnInit {
   ngOnInit(): void {
     this.uvaService.findAllUvas()
       .subscribe(data => {
-        this.dataSource = data.lista_uvas;
+        this.listaUvas = data.lista_uvas;
         this.uvaService.uvasChanged
           .subscribe(() => {
-            this.dataSource = data.lista_uvas;
+            this.listaUvas = data.lista_uvas;
           })
       });
   }

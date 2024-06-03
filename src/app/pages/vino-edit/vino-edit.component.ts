@@ -7,7 +7,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Uva } from 'src/app/shared/models/uva.model';
 import { UvaService } from 'src/app/shared/services/uva.service';
 import { VinoService } from 'src/app/shared/services/vino.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-vino-edit',
@@ -71,7 +70,7 @@ export class VinoEditComponent implements OnInit {
       'alergenos': ['', Validators.required],
       'breveDescripcion': ['', Validators.required],
       'imagenes': this.fb.group({
-        'imgAnv': null,
+        'imgAnv': '',
         'imgRev': '',
         'imgDet': ''
       }),
@@ -79,9 +78,7 @@ export class VinoEditComponent implements OnInit {
     });
 
     if (this.editMode) {
-      this.http.get<any>(
-        `${environment.apiUrl}vinos/${this.id}`
-      )
+      this.vinoService.getVino(this.id)
         .subscribe({
           next: (response) => {
             const vinoRes = response.data;

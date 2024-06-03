@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Uva } from '../models/uva.model';
 import { HttpClient } from '@angular/common/http';
-import { Subject, tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Subject, tap } from 'rxjs';
+
+import { Uva } from '../models/uva.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -34,9 +34,9 @@ export class UvaService {
   }
 
   getUva(id: number) {
-    return this.listaUvas.find(
-      (uva) => uva.id === id
-    )
+    return this.http.get<any>(
+      `${environment.apiUrl}uvas/${id}`
+    );
   }
 
   addUva(uvaForm: FormGroup) {
@@ -83,8 +83,7 @@ export class UvaService {
         `${environment.apiUrl}uvas/${id}/eliminar`
       )
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
           this.uvasChanged.next();
         }
       })
