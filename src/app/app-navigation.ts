@@ -16,6 +16,11 @@ export const navigation = [
         text: 'Vinos',
         path: '/vinos'
       }
+      ,
+      {
+        text: 'Uvas',
+        path: '/uvas'
+      }
     ]
   }
 ];

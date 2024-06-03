@@ -10,6 +10,7 @@ import { VinoDetailComponent } from './pages/vino-detail/vino-detail.component';
 import { VinoEditComponent } from './pages/vino-edit/vino-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { UvaListComponent } from './pages/uva-list/uva-list.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'uvas',
+    component: UvaListComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -89,7 +95,8 @@ const routes: Routes = [
     ProfileComponent,
     VinoListComponent,
     VinoDetailComponent,
-    VinoEditComponent
+    VinoEditComponent,
+    UvaListComponent
   ]
 })
 export class AppRoutingModule { }
