@@ -1,23 +1,21 @@
 <div class="content-block title">
   <h2>Vinos</h2>
   <div class="cockpit">
-    <dx-button 
-        id="new-button"
-        [width]="100" 
-        [routerLink]="['/vinos', 'nuevo']">
-        Nuevo Vino
-    </dx-button>
+    <button 
+      routerLink="/vinos/nuevo" 
+      class="btn btn-primary">
+      Nuevo vino</button>
   </div>
 </div>
 
 <dx-data-grid class="dx-card wide-card"
   [dataSource]="dataSource"
   [showBorders]="false"
-  [focusedRowEnabled]="true"
-  [focusedRowIndex]="0"
   [columnAutoWidth]="true"
   [columnHidingEnabled]="true"
-  (onRowClick)="onRowClick($event)">
+  [hoverStateEnabled]="true"
+  (onRowClick)="onRowClick($event)"
+  id="row">
 
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>

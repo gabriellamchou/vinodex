@@ -2,18 +2,18 @@
     <div class="content-block title">
         <h2>{{ vino.nombre }}</h2>
         <div class="cockpit">
-            <dx-button 
-                type="danger" 
-                [width]="100"
+            <button 
+                type="button" 
+                class="btn btn-danger"
                 (click)="onDeleteVino()">
                 Eliminar
-            </dx-button>
-            <dx-button 
-                id="edit-button"
-                [width]="100" 
+            </button>
+            <button 
+                type="button" 
+                class="btn btn-primary"
                 [routerLink]="['/vinos', vino.id, 'editar']">
                 Editar
-            </dx-button>
+            </button>
         </div>
     </div>
     <div class="details dx-card content-block">
