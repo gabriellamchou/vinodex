@@ -1,0 +1,63 @@
+<div *ngIf="uva">
+    <div class="content-block title">
+        <h2>{{ uva.nombre }}</h2>
+        <div class="cockpit">
+            <button 
+                type="button" 
+                class="btn btn-danger"
+                (click)="onDeleteUva()">
+                Eliminar
+            </button>
+            <button 
+                type="button" 
+                class="btn btn-primary"
+                [routerLink]="['/uvas', uva.id, 'editar']">
+                Editar
+            </button>
+        </div>
+    </div>
+    <div class="details dx-card content-block">
+        <div class="foto-uva">
+            <img 
+                class="img-responsive" 
+                src="https://www.lechepuleva.es/documents/13930/203222/uva_g.jpg/4ee0cd1b-f0d3-41cc-80b8-17e5a80b834a?t=1422618555000" 
+                [alt]="uva.nombre">
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Descripcion</h5>
+                <p>{{ uva.descripcion }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Acidez</h5>
+                <p>{{ uva.acidez }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Dulzor</h5>
+                <p>{{ uva.dulzor }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Cuerpo</h5>
+                <p>{{ uva.cuerpo }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Taninos</h5>
+                <p>{{ uva.taninos }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Abv</h5>
+                <p>{{ uva.abv }}</p>
+            </div>
+        </div>
+    </div>
+</div>

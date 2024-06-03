@@ -36,4 +36,9 @@ export class UvaService {
       (uva) => uva.id === id
     )
   }
+
+  deleteUva(id: number) {
+    console.log("El método deleteUva todavía no está desarrollado");
+    
+  }
 }

@@ -1,0 +1,39 @@
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.details {
+    padding: 20px;
+}
+
+.cockpit {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    width: 120px;
+}
+
+.foto-uva {
+    float: left;
+    height: 320px;
+    width: 320px;
+    margin-right: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 300px;
+        display: block;
+        margin: 0 auto;
+    }
+}
