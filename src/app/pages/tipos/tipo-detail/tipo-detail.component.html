@@ -1,0 +1,33 @@
+<div *ngIf="tipo">
+    <div class="content-block title">
+        <h2>{{ tipo.nombre }}</h2>
+        <div class="cockpit">
+            <button 
+                type="button" 
+                class="btn btn-danger"
+                (click)="onDeleteTipo()">
+                Eliminar
+            </button>
+            <button 
+                type="button" 
+                class="btn btn-primary"
+                [routerLink]="['/tipos', tipo.id, 'editar']">
+                Editar
+            </button>
+        </div>
+    </div>
+    <div class="details dx-card content-block">
+        <div class="foto-tipo">
+            <img 
+                class="img-responsive" 
+                src="https://bodegasibarguen.com/wp-content/uploads/2022/07/tipos.copa_.vino_.jpg" 
+                [alt]="tipo.nombre">
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Descripción</h5>
+                <p>{{ tipo.descripcion }}</p>
+            </div>
+        </div>
+    </div>
+</div>

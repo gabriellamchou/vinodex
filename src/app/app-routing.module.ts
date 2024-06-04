@@ -21,6 +21,7 @@ import { BodegaListComponent } from './pages/bodegas/bodega-list/bodega-list.com
 import { BodegaDetailComponent } from './pages/bodegas/bodega-detail/bodega-detail.component';
 import { BodegaEditComponent } from './pages/bodegas/bodega-edit/bodega-edit.component';
 import { TipoListComponent } from './pages/tipos/tipo-list/tipo-list.component';
+import { TipoDetailComponent } from './pages/tipos/tipo-detail/tipo-detail.component';
 
 const routes: Routes = [
   {
@@ -139,6 +140,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'tipos/:id',
+    component: TipoDetailComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -175,7 +181,8 @@ const routes: Routes = [
     BodegaListComponent,
     BodegaDetailComponent,
     BodegaEditComponent,
-    TipoListComponent
+    TipoListComponent,
+    TipoDetailComponent
   ]
 })
 export class AppRoutingModule { }
