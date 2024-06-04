@@ -1,27 +1,26 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-
-import { RegionService } from 'src/app/shared/services/region.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { BodegaService } from 'src/app/shared/services/bodega.service';
 
 @Component({
-  selector: 'app-region-edit',
-  templateUrl: './region-edit.component.html',
-  styleUrls: ['./region-edit.component.scss']
+  selector: 'app-bodega-edit',
+  templateUrl: './bodega-edit.component.html',
+  styleUrls: ['./bodega-edit.component.scss']
 })
-export class RegionEditComponent implements OnInit {
+export class BodegaEditComponent implements OnInit {
 
   id!: number;
   editMode: boolean = false;
-  heading = 'Nueva región';
-  regionForm!: FormGroup;
+  heading = 'Nueva bodega';
+  bodegaForm!: FormGroup;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private location: Location,
-    private regionService: RegionService,
+    private bodegaService: BodegaService,
     private fb: FormBuilder
   ) { }
 
@@ -32,7 +31,7 @@ export class RegionEditComponent implements OnInit {
           if (params['id'] != null) {
             this.id = +params['id'];
             this.editMode = true;
-            this.heading = 'Editar región';
+            this.heading = 'Editar bodega';
           }
           this.initForm();
         }
@@ -40,28 +39,26 @@ export class RegionEditComponent implements OnInit {
   }
 
   private initForm() {
-    this.regionForm = this.fb.group({
+    this.bodegaForm = this.fb.group({
       'id': [null, Validators.required],
       'nombre': ['', Validators.required],
-      'pais': ['', Validators.required],
       'descripcion': [null, Validators.required]
     });
 
     if (this.editMode) {
-      this.regionService.getRegion(this.id)
+      this.bodegaService.getBodega(this.id)
         .subscribe({
           next: (response) => {
             const uvaRes = response.data;
 
-            this.regionForm.patchValue({
+            this.bodegaForm.patchValue({
               'id': this.id,
               'nombre': uvaRes['nombre'],
-              'pais': uvaRes['pais'],
               'descripcion': uvaRes['descripcion']
             });
           },
           error: (error) => {
-            console.error('Error al obtener la región:', error);
+            console.error('Error al obtener la bodega:', error);
           }
         })
     }
@@ -73,15 +70,16 @@ export class RegionEditComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
-      this.regionService.updateRegion(this.id, this.regionForm);
+      this.bodegaService.updateBodega(this.id, this.bodegaForm);
     } else {
-      this.regionService.addRegion(this.regionForm);
+      this.bodegaService.addBodega(this.bodegaForm);
     }
-    this.regionService.regionesChanged
+    this.bodegaService.bodegasChanged
       .subscribe({
         next: () => {
           this.router.navigate(['..'], { relativeTo: this.route });
         }
       });
   }
+
 }
