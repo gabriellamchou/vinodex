@@ -5,10 +5,12 @@ import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@ang
 import { ActivatedRoute, Params } from '@angular/router';
 import { Bodega } from 'src/app/shared/models/bodega.model';
 import { Region } from 'src/app/shared/models/region.model';
+import { Tipo } from 'src/app/shared/models/tipo.model';
 
 import { Uva } from 'src/app/shared/models/uva.model';
 import { BodegaService } from 'src/app/shared/services/bodega.service';
 import { RegionService } from 'src/app/shared/services/region.service';
+import { TipoService } from 'src/app/shared/services/tipo.service';
 import { UvaService } from 'src/app/shared/services/uva.service';
 import { VinoService } from 'src/app/shared/services/vino.service';
 
@@ -26,6 +28,7 @@ export class VinoEditComponent implements OnInit {
   listaUvas!: Uva[];
   listaRegiones!: Region[];
   listaBodegas!: Bodega[];
+  listaTipos!: Tipo[];
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +37,7 @@ export class VinoEditComponent implements OnInit {
     private uvaService: UvaService,
     private regionService: RegionService,
     private bodegaService: BodegaService,
+    private tipoService: TipoService,
     private fb: FormBuilder
   ) { }
 
@@ -74,6 +78,15 @@ export class VinoEditComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error obteniendo bodegas: ', err);
+      }
+    });
+
+    this.tipoService.findAllTipos().subscribe({
+      next: (response) => {
+        this.listaTipos = response.lista_tipos;
+      },
+      error: (err) => {
+        console.error('Error obteniendo tipos: ', err);
       }
     });
 

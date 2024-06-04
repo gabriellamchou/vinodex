@@ -23,15 +23,15 @@
                         class="form-control">
                 </div>
                 <div class="col-sm-3 form-group">
-                    <label for="tipo">Tipo</label>
+                    <label>Tipo</label>
                     <select 
-                        name="tipoSelect" 
-                        formControlName="tipo"
-                        id="tipo"
+                        type="text" 
+                        id="tipoSelect" 
+                        formControlName="tipo" 
                         class="form-control">
-                        <option value="1">Vino Tinto</option>
-                        <option value="2">Vino Blanco</option>
-                        <option value="3">Vino Rosado</option>
+                    <option 
+                        *ngFor="let tipo of listaTipos" 
+                        [value]="tipo.id">{{ tipo.nombre }}</option>
                     </select>
                 </div>
             </div>

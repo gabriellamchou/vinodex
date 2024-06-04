@@ -27,6 +27,10 @@ export const navigation = [
       {
         text: 'Bodegas',
         path: '/bodegas'
+      },
+      {
+        text: 'Tipos',
+        path: '/tipos'
       }
     ]
   }
