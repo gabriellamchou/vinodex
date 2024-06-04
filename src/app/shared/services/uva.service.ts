@@ -11,9 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class UvaService {
 
+  private listaUvas: Uva[] = [];
   uvasChanged = new Subject<void>();
-
-  private listaUvas: Uva[] = []
 
   constructor(
     private http: HttpClient
@@ -58,13 +57,7 @@ export class UvaService {
   }
 
   updateUva(id: number, modUva: FormGroup) {
-    const form = new FormData();
     const formData = modUva.value;
-
-    Object.keys(formData).forEach((key) => {
-      form.append(key, formData[key]);
-    });
-
     this.http.put(
       `${environment.apiUrl}uvas/${id}/editar`,
       formData
@@ -85,6 +78,6 @@ export class UvaService {
         next: () => {
           this.uvasChanged.next();
         }
-      })
+      });
   }
 }

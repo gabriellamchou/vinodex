@@ -10,7 +10,7 @@ import { environment } from "src/environments/environment";
 })
 export class RegionService {
 
-    listaRegiones: [] = [];
+    private listaRegiones: [] = [];
     regionesChanged = new Subject<void>;
 
     constructor(
@@ -51,11 +51,28 @@ export class RegionService {
             })
     }
 
-    updateRegion(id: number, regForm: FormGroup) {
-        console.log('El método updateRegion todavía no está desarrollado');
+    updateRegion(id: number, modReg: FormGroup) {
+        const formData = modReg.value;
+        this.http.put(
+            `${environment.apiUrl}regiones/${id}/editar`,
+            formData
+        ).subscribe({
+            next: (response) => {
+                console.log(response);
+                this.regionesChanged.next();
+            }
+        });
     }
 
     deleteRegion(id: number) {
-        console.log('El método deleteRegion todavía no está desarrollado');
+        this.http
+            .delete(
+                `${environment.apiUrl}regiones/${id}/eliminar`
+            )
+            .subscribe({
+                next: () => {
+                    this.regionesChanged.next();
+                }
+            });
     }
 }
