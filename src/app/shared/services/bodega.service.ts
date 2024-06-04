@@ -25,4 +25,14 @@ export class BodegaService {
                 tap(response => this.listaBodegas = response.lista_bodegas)
             );
     }
+
+    getBodega(id: number) {
+        return this.http.get<any>(
+            `${environment.apiUrl}bodegas/${id}`
+        );
+    }
+
+    deleteBodega(id: number) {
+        console.log("El método deleteBodega todavía no está desarrollado");
+    }
 }

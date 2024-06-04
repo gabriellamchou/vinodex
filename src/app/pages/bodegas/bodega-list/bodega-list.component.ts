@@ -13,7 +13,8 @@ export class BodegaListComponent implements OnInit {
 
   constructor(
     private bodegaService: BodegaService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.bodegaService.findAllBodegas()

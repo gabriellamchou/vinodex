@@ -18,6 +18,7 @@ import { RegionListComponent } from './pages/regiones/region-list/region-list.co
 import { RegionDetailComponent } from './pages/regiones/region-detail/region-detail.component';
 import { RegionEditComponent } from './pages/regiones/region-edit/region-edit.component';
 import { BodegaListComponent } from './pages/bodegas/bodega-list/bodega-list.component';
+import { BodegaDetailComponent } from './pages/bodegas/bodega-detail/bodega-detail.component';
 
 const routes: Routes = [
   {
@@ -116,6 +117,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'bodegas/:id',
+    component: BodegaDetailComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -149,7 +155,8 @@ const routes: Routes = [
     RegionListComponent,
     RegionDetailComponent,
     RegionEditComponent,
-    BodegaListComponent
+    BodegaListComponent,
+    BodegaDetailComponent
   ]
 })
 export class AppRoutingModule { }

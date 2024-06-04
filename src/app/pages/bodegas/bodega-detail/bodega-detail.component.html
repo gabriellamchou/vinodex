@@ -1,0 +1,33 @@
+<div *ngIf="bodega">
+    <div class="content-block title">
+        <h2>{{ bodega.nombre }}</h2>
+        <div class="cockpit">
+            <button 
+                type="button" 
+                class="btn btn-danger"
+                (click)="onDeleteBodega()">
+                Eliminar
+            </button>
+            <button 
+                type="button" 
+                class="btn btn-primary"
+                [routerLink]="['/bodegas', bodega.id, 'editar']">
+                Editar
+            </button>
+        </div>
+    </div>
+    <div class="details dx-card content-block">
+        <div class="foto-bodega">
+            <img 
+                class="img-responsive" 
+                src="https://www.bodegasriojanas.com/wp-content/uploads/2020/04/br1.jpg" 
+                [alt]="bodega.nombre">
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>Descripción</h5>
+                <p>{{ bodega.descripcion }}</p>
+            </div>
+        </div>
+    </div>
+</div>
