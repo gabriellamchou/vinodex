@@ -25,4 +25,14 @@ export class RegionService {
                 tap(response => this.listaRegiones = response.lista_regiones)
             );
     }
+
+    getRegion(id: number) {
+        return this.http.get<any>(
+            `${environment.apiUrl}regiones/${id}`
+        );
+    }
+
+    deleteRegion(id: number) {
+        console.log('El método deleteRegion todavía no está desarrollado');
+    }
 }
