@@ -94,7 +94,7 @@ export class VinoEditComponent implements OnInit {
 
   private initForm() {
     this.vinoForm = this.fb.group({
-      'id': [null, Validators.required],
+      'id': [null],
       'nombre': ['', Validators.required],
       'region': [null, Validators.required],
       'tipo': [null, Validators.required],

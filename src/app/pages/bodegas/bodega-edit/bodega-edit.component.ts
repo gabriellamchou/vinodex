@@ -40,7 +40,7 @@ export class BodegaEditComponent implements OnInit {
 
   private initForm() {
     this.bodegaForm = this.fb.group({
-      'id': [null, Validators.required],
+      'id': [null],
       'nombre': ['', Validators.required],
       'descripcion': [null, Validators.required]
     });

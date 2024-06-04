@@ -42,7 +42,7 @@ export class UvaEditComponent implements OnInit {
 
   private initForm() {
     this.uvaForm = this.fb.group({
-      'id': [null, Validators.required],
+      'id': [null],
       'nombre': ['', Validators.required],
       'descripcion': [null, Validators.required],
       'acidez': [null],

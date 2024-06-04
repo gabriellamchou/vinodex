@@ -40,7 +40,7 @@ export class TipoEditComponent implements OnInit {
 
   private initForm() {
     this.tipoForm = this.fb.group({
-      'id': [null, Validators.required],
+      'id': null,
       'nombre': ['', Validators.required],
       'descripcion': [null, Validators.required]
     });

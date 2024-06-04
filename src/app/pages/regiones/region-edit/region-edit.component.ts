@@ -41,7 +41,7 @@ export class RegionEditComponent implements OnInit {
 
   private initForm() {
     this.regionForm = this.fb.group({
-      'id': [null, Validators.required],
+      'id': [null],
       'nombre': ['', Validators.required],
       'pais': ['', Validators.required],
       'descripcion': [null, Validators.required]
