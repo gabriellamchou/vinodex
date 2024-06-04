@@ -23,8 +23,7 @@ export class UvaEditComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private uvaService: UvaService,
-    private fb: FormBuilder,
-    private http: HttpClient
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {

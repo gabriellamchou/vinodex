@@ -1,0 +1,52 @@
+button {
+    margin-right: 5px;
+}
+
+.cockpit {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input.ng-invalid.ng-dirty,
+select.ng-invalid.ng-dirty {
+    border: 1px solid firebrick;
+}
+
+input.ng-invalid.ng-dirty:focus,
+select.ng-invalid.ng-dirty:focus {
+    box-shadow: 0 0 0 3px rgba(228, 21, 21, 0.4);
+}
+
+.img-preview {
+    margin: 20px;
+    max-height: 500px;
+    border: 1px solid rgba(187, 187, 187, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.img-preview img {
+    max-height: 450px;
+}
+
+.msg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msg-content {
+    color: rgba(147, 147, 147, 0.5);
+}
+
+.dx-card {
+    padding: 20px;
+}

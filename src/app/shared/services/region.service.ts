@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { Subject, tap } from "rxjs";
 
 import { environment } from "src/environments/environment";
@@ -30,6 +31,28 @@ export class RegionService {
         return this.http.get<any>(
             `${environment.apiUrl}regiones/${id}`
         );
+    }
+
+    addRegion(regForm: FormGroup) {
+        const form = new FormData();
+        const formData = regForm.value;
+        Object.keys(formData).forEach((key) => {
+            form.append(key, formData[key]);
+        });
+        this.http.post(
+            `${environment.apiUrl}regiones/nueva`,
+            form
+        )
+            .subscribe({
+                next: () => {
+                    this.regionesChanged.next();
+                },
+                error: (error) => { console.error(error) }
+            })
+    }
+
+    updateRegion(id: number, regForm: FormGroup) {
+        console.log('El método updateRegion todavía no está desarrollado');
     }
 
     deleteRegion(id: number) {

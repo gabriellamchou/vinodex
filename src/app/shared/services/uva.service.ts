@@ -50,8 +50,7 @@ export class UvaService {
       form
     )
       .subscribe({
-        next: (response) => { 
-          console.log(response);
+        next: () => { 
           this.uvasChanged.next();
         },
         error: (error) => { console.error(error) }

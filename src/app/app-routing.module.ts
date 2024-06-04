@@ -16,6 +16,7 @@ import { UvaDetailComponent } from './pages/uvas/uva-detail/uva-detail.component
 import { UvaEditComponent } from './pages/uvas/uva-edit/uva-edit.component';
 import { RegionListComponent } from './pages/regiones/region-list/region-list.component';
 import { RegionDetailComponent } from './pages/regiones/region-detail/region-detail.component';
+import { RegionEditComponent } from './pages/regiones/region-edit/region-edit.component';
 
 const routes: Routes = [
   {
@@ -94,8 +95,18 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'regiones/nueva',
+    component: RegionEditComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: 'regiones/:id',
     component: RegionDetailComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'regiones/:id/editar',
+    component: RegionEditComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -130,7 +141,8 @@ const routes: Routes = [
     UvaDetailComponent,
     UvaEditComponent,
     RegionListComponent,
-    RegionDetailComponent
+    RegionDetailComponent,
+    RegionEditComponent
   ]
 })
 export class AppRoutingModule { }
