@@ -1,5 +1,5 @@
 <div class="content-block title">
-<h2>Uvas</h2>
+<h2>Regiones</h2>
 <div class="cockpit">
     <button 
     routerLink="/regiones/nueva" 
@@ -9,13 +9,13 @@
 </div>
 
 <dx-data-grid class="dx-card wide-card"
-[dataSource]="listaRegiones"
-[showBorders]="false"
-[columnAutoWidth]="true"
-[columnHidingEnabled]="true"
-[hoverStateEnabled]="true"
-(onRowClick)="onRowClick($event)"
-id="row">
+    [dataSource]="listaRegiones"
+    [showBorders]="false"
+    [columnAutoWidth]="true"
+    [columnHidingEnabled]="true"
+    [hoverStateEnabled]="true"
+    (onRowClick)="onRowClick($event)"
+    id="row">
 
 <dxo-paging [pageSize]="10"></dxo-paging>
 <dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>

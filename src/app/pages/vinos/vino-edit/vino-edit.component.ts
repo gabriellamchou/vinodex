@@ -3,9 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Bodega } from 'src/app/shared/models/bodega.model';
 import { Region } from 'src/app/shared/models/region.model';
 
 import { Uva } from 'src/app/shared/models/uva.model';
+import { BodegaService } from 'src/app/shared/services/bodega.service';
 import { RegionService } from 'src/app/shared/services/region.service';
 import { UvaService } from 'src/app/shared/services/uva.service';
 import { VinoService } from 'src/app/shared/services/vino.service';
@@ -23,6 +25,7 @@ export class VinoEditComponent implements OnInit {
   vinoForm!: FormGroup;
   listaUvas!: Uva[];
   listaRegiones!: Region[];
+  listaBodegas!: Bodega[];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +33,7 @@ export class VinoEditComponent implements OnInit {
     private vinoService: VinoService,
     private uvaService: UvaService,
     private regionService: RegionService,
+    private bodegaService: BodegaService,
     private fb: FormBuilder
   ) { }
 
@@ -53,7 +57,7 @@ export class VinoEditComponent implements OnInit {
       error: (err) => {
         console.error('Error obteniendo uvas: ', err);
       }
-    })
+    });
 
     this.regionService.findAllRegiones().subscribe({
       next: (response) => {
@@ -62,7 +66,17 @@ export class VinoEditComponent implements OnInit {
       error: (err) => {
         console.error('Error obteniendo regiones: ', err);
       }
-    })
+    });
+
+    this.bodegaService.findAllBodegas().subscribe({
+      next: (response) => {
+        this.listaBodegas = response.lista_bodegas;
+      },
+      error: (err) => {
+        console.error('Error obteniendo bodegas: ', err);
+      }
+    });
+
   }
 
   private initForm() {

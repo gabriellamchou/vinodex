@@ -23,6 +23,10 @@ export const navigation = [
       {
         text: 'Regiones',
         path: '/regiones'
+      },
+      {
+        text: 'Bodegas',
+        path: '/bodegas'
       }
     ]
   }

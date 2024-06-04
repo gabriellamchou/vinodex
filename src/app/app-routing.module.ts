@@ -17,6 +17,7 @@ import { UvaEditComponent } from './pages/uvas/uva-edit/uva-edit.component';
 import { RegionListComponent } from './pages/regiones/region-list/region-list.component';
 import { RegionDetailComponent } from './pages/regiones/region-detail/region-detail.component';
 import { RegionEditComponent } from './pages/regiones/region-edit/region-edit.component';
+import { BodegaListComponent } from './pages/bodegas/bodega-list/bodega-list.component';
 
 const routes: Routes = [
   {
@@ -110,6 +111,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'bodegas',
+    component: BodegaListComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -142,7 +148,8 @@ const routes: Routes = [
     UvaEditComponent,
     RegionListComponent,
     RegionDetailComponent,
-    RegionEditComponent
+    RegionEditComponent,
+    BodegaListComponent
   ]
 })
 export class AppRoutingModule { }

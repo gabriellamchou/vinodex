@@ -49,15 +49,15 @@
                     </select>
                 </div>
                 <div class="col-sm-6 form-group">
-                    <label for="bodega">Bodega</label>
+                    <label>Bodega</label>
                     <select 
-                        name="bodegaSelect" 
-                        formControlName="bodega"
-                        id="bodega"
+                        type="text" 
+                        id="bodegaSelect" 
+                        formControlName="bodega" 
                         class="form-control">
-                        <option value="1">Raúl Pérez Viticultor</option>
-                        <option value="2">Dominio de Pingus</option>
-                        <option value="3">Bodegas Volver</option>
+                    <option 
+                        *ngFor="let bod of listaBodegas" 
+                        [value]="bod.id">{{ bod.nombre }}</option>
                     </select>
                 </div>
             </div>
