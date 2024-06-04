@@ -22,6 +22,7 @@ import { BodegaDetailComponent } from './pages/bodegas/bodega-detail/bodega-deta
 import { BodegaEditComponent } from './pages/bodegas/bodega-edit/bodega-edit.component';
 import { TipoListComponent } from './pages/tipos/tipo-list/tipo-list.component';
 import { TipoDetailComponent } from './pages/tipos/tipo-detail/tipo-detail.component';
+import { TipoEditComponent } from './pages/tipos/tipo-edit/tipo-edit.component';
 
 const routes: Routes = [
   {
@@ -140,8 +141,18 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'tipos/nuevo',
+    component: TipoEditComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: 'tipos/:id',
     component: TipoDetailComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'tipos/:id/editar',
+    component: TipoEditComponent,
     canActivate: [ AuthGuardService ]
   },
   {
@@ -182,7 +193,8 @@ const routes: Routes = [
     BodegaDetailComponent,
     BodegaEditComponent,
     TipoListComponent,
-    TipoDetailComponent
+    TipoDetailComponent,
+    TipoEditComponent
   ]
 })
 export class AppRoutingModule { }
