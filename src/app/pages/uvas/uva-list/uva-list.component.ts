@@ -18,13 +18,14 @@ export class UvaListComponent implements OnInit {
 
   ngOnInit(): void {
     this.uvaService.findAllUvas()
-      .subscribe(data => {
-        this.listaUvas = data.lista_uvas;
+      .subscribe({
+        next: (response) => {
+        this.listaUvas = response.lista_uvas;
         this.uvaService.uvasChanged
           .subscribe(() => {
-            this.listaUvas = data.lista_uvas;
+            this.listaUvas = response.lista_uvas;
           })
-      });
+      }});
   }
 
   onRowClick(event: any) {

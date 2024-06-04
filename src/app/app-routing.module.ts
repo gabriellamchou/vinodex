@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { LoginFormComponent, ResetPasswordFormComponent, CreateAccountFormComponent, ChangePasswordFormComponent } from './shared/components';
 import { AuthGuardService } from './shared/services';
@@ -9,11 +11,10 @@ import { DxButtonModule, DxDataGridModule, DxFormModule, DxNumberBoxModule, DxSe
 import { VinoListComponent } from './pages/vinos/vino-list/vino-list.component';
 import { VinoDetailComponent } from './pages/vinos/vino-detail/vino-detail.component';
 import { VinoEditComponent } from './pages/vinos/vino-edit/vino-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { UvaListComponent } from './pages/uvas/uva-list/uva-list.component';
 import { UvaDetailComponent } from './pages/uvas/uva-detail/uva-detail.component';
 import { UvaEditComponent } from './pages/uvas/uva-edit/uva-edit.component';
+import { RegionListComponent } from './pages/regiones/region-list/region-list.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,11 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
+    path: 'regiones',
+    component: RegionListComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -116,7 +122,8 @@ const routes: Routes = [
     VinoEditComponent,
     UvaListComponent,
     UvaDetailComponent,
-    UvaEditComponent
+    UvaEditComponent,
+    RegionListComponent
   ]
 })
 export class AppRoutingModule { }

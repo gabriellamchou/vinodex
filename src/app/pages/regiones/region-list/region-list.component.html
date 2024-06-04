@@ -1,0 +1,39 @@
+<div class="content-block title">
+<h2>Uvas</h2>
+<div class="cockpit">
+    <button 
+    routerLink="/regiones/nueva" 
+    class="btn btn-primary">
+    Nueva uva</button>
+</div>
+</div>
+
+<dx-data-grid class="dx-card wide-card"
+[dataSource]="listaRegiones"
+[showBorders]="false"
+[columnAutoWidth]="true"
+[columnHidingEnabled]="true"
+[hoverStateEnabled]="true"
+(onRowClick)="onRowClick($event)"
+id="row">
+
+<dxo-paging [pageSize]="10"></dxo-paging>
+<dxo-pager [showPageSizeSelector]="true" [showInfo]="true"></dxo-pager>
+<dxo-filter-row [visible]="true"></dxo-filter-row>
+
+<dxi-column
+    dataField="id"
+    [width]="90"
+    [hidingPriority]="1">
+</dxi-column>
+<dxi-column
+    dataField="nombre"
+    caption="Nombre"
+    [hidingPriority]="3">
+</dxi-column>
+<dxi-column
+    dataField="pais"
+    caption="País"
+    [hidingPriority]="2">
+</dxi-column>
+</dx-data-grid>

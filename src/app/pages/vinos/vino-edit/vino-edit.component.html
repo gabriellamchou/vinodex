@@ -37,15 +37,15 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 form-group">
-                    <label for="region">Región</label>
+                    <label>Región</label>
                     <select 
-                        name="regionSelect" 
-                        formControlName="region"
-                        id="region"
+                        type="text" 
+                        id="regionSelect" 
+                        formControlName="region" 
                         class="form-control">
-                        <option value="1">Bierzo</option>
-                        <option value="2">Ribera del Duero</option>
-                        <option value="3">Pays d'Oc IGP</option>
+                    <option 
+                        *ngFor="let reg of listaRegiones" 
+                        [value]="reg.id">{{ reg.nombre }}</option>
                     </select>
                 </div>
                 <div class="col-sm-6 form-group">

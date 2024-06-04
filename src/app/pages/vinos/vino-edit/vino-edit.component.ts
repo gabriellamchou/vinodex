@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Region } from 'src/app/shared/models/region.model';
 
 import { Uva } from 'src/app/shared/models/uva.model';
+import { RegionService } from 'src/app/shared/services/region.service';
 import { UvaService } from 'src/app/shared/services/uva.service';
 import { VinoService } from 'src/app/shared/services/vino.service';
 
@@ -20,14 +22,15 @@ export class VinoEditComponent implements OnInit {
   heading = 'Nuevo vino';
   vinoForm!: FormGroup;
   listaUvas!: Uva[];
+  listaRegiones!: Region[];
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private vinoService: VinoService,
     private uvaService: UvaService,
-    private fb: FormBuilder,
-    private http: HttpClient
+    private regionService: RegionService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -46,11 +49,18 @@ export class VinoEditComponent implements OnInit {
     this.uvaService.findAllUvas().subscribe({
       next: (response) => {
         this.listaUvas = response.lista_uvas;
-        console.log(this.listaUvas);
-        
       },
       error: (err) => {
         console.error('Error obteniendo uvas: ', err);
+      }
+    })
+
+    this.regionService.findAllRegiones().subscribe({
+      next: (response) => {
+        this.listaRegiones = response.lista_regiones;
+      },
+      error: (err) => {
+        console.error('Error obteniendo regiones: ', err);
       }
     })
   }
